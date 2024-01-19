@@ -87,16 +87,16 @@ title:{
       }
       
 },{timestamps:true})
-// PropertySchema.pre('save',async function(next){
-//     const loc=await geocoder.geocode(this.address)
-//     this.location={
-//         type: 'Point',
-//         coordinates: [loc[0].longitude, loc[0].latitude],
-//         formattedAddress: loc[0].formattedAddress,
-//         city:loc[0].city,
-//         streetName:loc[0].streetName
-//     }
-// })
+PropertySchema.pre('save',async function(next){
+    const loc=await geocoder.geocode(this.address)
+    this.location={
+        type: 'Point',
+        coordinates: [loc[0].longitude, loc[0].latitude],
+        formattedAddress: loc[0].formattedAddress,
+        city:loc[0].city,
+        streetName:loc[0].streetName
+    }
+})
 
 
 export default mongoose.model("property",PropertySchema)
