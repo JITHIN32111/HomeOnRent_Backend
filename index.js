@@ -35,13 +35,13 @@ connect(process.env.MONGO_URL, {
   .catch((err) => {
     console.log(err);
   });
-const BASE_URL="https://homeonrentback.onrender.com/api"
+const BASE_URL="https://homeonrentback.onrender.com"
 app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-app.use("/api/auth", authRotes);
-app.use("/api/property", propertyRoutes);
+app.use(`${BASE_URL}/api/auth`, authRotes);
+app.use(`${BASE_URL}/api/property`, propertyRoutes);
 app.use("/api/user", userRoutes);
 // app.use("/auth", authRotes);
 // app.use("/property", propertyRoutes);
