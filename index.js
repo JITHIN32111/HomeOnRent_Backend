@@ -15,13 +15,12 @@ dotenv.config();
 //     credentials: true
 // }));
 app.use(
-  cors({
-    origin: ['https://homeonrentv.onrender.com','https://homeonrentv.onrender.com/api'],
-    methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
-    credentials: true,
-    
-  })
-);
+    cors({
+      origin: ['https://homeonrentv.onrender.com','https://homeonrentback.onrender.com'],
+      methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
+      credentials: true,
+    })
+  );
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 connect(process.env.MONGO_URL, {
