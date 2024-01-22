@@ -16,9 +16,10 @@ dotenv.config();
 // }));
 app.use(
   cors({
-    origin: ["https://homeonrentv.onrender.com"],
+    origin: ["*"],
     methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
     credentials: true,
+    
   })
 );
 app.use(cookieParser());

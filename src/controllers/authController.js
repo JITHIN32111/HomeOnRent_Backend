@@ -15,6 +15,7 @@ export const signup =
   ("/register",
   async (req, res) => {
 console.log("::::::::::");
+console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     try {
       const isExisting = await seller.findOne({ email: req.body.email });
 
