@@ -35,6 +35,7 @@ connect(process.env.MONGO_URL, {
   .catch((err) => {
     console.log(err);
   });
+  const BASE_URL="https://homeonrentback.onrender.com"
 app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
