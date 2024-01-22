@@ -16,7 +16,7 @@ dotenv.config();
 // }));
 app.use(
   cors({
-    origin: ["https://chatbot-s8ht.onrender.com"],
+    origin: ["https://homeonrentv.onrender.com"],
     methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
     credentials: true,
   })
