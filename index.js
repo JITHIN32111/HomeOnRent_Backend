@@ -23,8 +23,7 @@ app.use(
 );
 app.use(cookieParser());
 const PORT=process.env.PORT|| 5000
-
-connect(process.env.MONGO_URL)
+connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`server running on ${process.env.PORT}`);
