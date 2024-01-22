@@ -23,7 +23,7 @@ app.use(
 );
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
-connect("mongodb+srv://jith97972:jithin1234@cluster0.pjtnphs.mongodb.net/?retryWrites=true&w=majority", {
+connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
