@@ -11,8 +11,47 @@ dotenv.config();
 
 
 // owner signup
+// export const signup =
+//   ("/register",
+//   async (req, res) => {
+// console.log("::::::::::");
+// console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//     try {
+//       const isExisting = await seller.findOne({ email: req.body.email });
+
+//       if (isExisting) {
+//         return res
+//           .status(500)
+//           .json({ msg: "Email is already taken by another user." });
+//       }
+
+//       const hashedPassword = await hash(req.body.password, 10);
+
+//       const newUser = await seller.create({
+//         ...req.body,
+//         password: hashedPassword,
+//       });
+//       const token = await new Token({
+//         userId: newUser._id,
+//         token: randomBytes(32).toString("hex"),
+//       }).save();
+
+//       const url = `${process.env.BASE_URL}users/${newUser._id}/verify/${token.token}`;
+//       await sendMail(newUser.email, "Verify Email", url);
+//       const { password, ...others } = newUser._doc;
+   
+
+//       return res.status(201).json({
+//         others,
+//         message: "an email has sent to your account",
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       return res.status(500).json(error);
+//     }
+//   });
 export const signup =
-  ("/register",
+ 
   async (req, res) => {
 console.log("::::::::::");
 console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -49,12 +88,39 @@ console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
       console.log(error);
       return res.status(500).json(error);
     }
-  });
-
+  }
 
 // ownerLogin
+// export const login =
+//   ("/login",
+//   async (req, res) => {
+//     try {
+//       console.log(req.body);
+//       const sellers = await seller.findOne({ email: req.body.email });
+
+//       if (!sellers) {
+//         return res.status(500).json("wrong credentials");
+//       }
+
+//       const comparePass = await compare(req.body.password, sellers.password);
+//       if (!comparePass) {
+//         return res.status(500).json("wrong credentials");
+//       }
+
+//       const token = jwt.sign({ id: sellers._id }, process.env.JWT_SECRET, {
+//         expiresIn: "4h",
+//       });
+
+//       const { password, ...others } = sellers._doc;
+
+//       return res.status(200).json({ others, token });
+//     } catch (error) {
+//       console.log(error);
+//       return res.status(500).json(error);
+//     }
+//   });
 export const login =
-  ("/login",
+  
   async (req, res) => {
     try {
       console.log(req.body);
@@ -80,8 +146,7 @@ export const login =
       console.log(error);
       return res.status(500).json(error);
     }
-  });
-
+  }
 
 // ownerEmailVerification
 export const emailVerification =

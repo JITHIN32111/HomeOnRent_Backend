@@ -16,7 +16,7 @@ dotenv.config();
 // }));
 app.use(
     cors({
-      origin: ['https://homeonrentv.onrender.com'],
+      origin: ['https://homeonrentv.onrender.com','https://homeonrentback.onrender.com'],
       methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
       credentials: true,
     })
@@ -40,9 +40,9 @@ app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-app.use(`/api/auth`, authRotes);
-app.use(`/api/property`, propertyRoutes);
-app.use("/api/user", userRoutes);
-// app.use("/auth", authRotes);
-// app.use("/property", propertyRoutes);
-// app.use("/user", userRoutes);
+// app.use(`/api/auth`, authRotes);
+// app.use(`/api/property`, propertyRoutes);
+// app.use("/api/user", userRoutes);
+app.use("/auth", authRotes);
+app.use("/property", propertyRoutes);
+app.use("/user", userRoutes);
