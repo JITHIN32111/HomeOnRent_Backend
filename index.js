@@ -40,8 +40,8 @@ app.use(logger("dev"));
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-app.use(`${BASE_URL}/api/auth`, authRotes);
-app.use(`${BASE_URL}/api/property`, propertyRoutes);
+app.use(`/api/auth`, authRotes);
+app.use(`/api/property`, propertyRoutes);
 app.use("/api/user", userRoutes);
 // app.use("/auth", authRotes);
 // app.use("/property", propertyRoutes);
