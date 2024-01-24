@@ -75,8 +75,8 @@ console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         token: randomBytes(32).toString("hex"),
       }).save();
 
-      const url = `${process.env.BASE_URL}users/${newUser._id}/verify/${token.token}`;
-      await sendMail(newUser.email, "Verify Email", url);
+      // const url = `${process.env.BASE_URL}users/${newUser._id}/verify/${token.token}`;
+      // await sendMail(newUser.email, "Verify Email", url);
       const { password, ...others } = newUser._doc;
    
 

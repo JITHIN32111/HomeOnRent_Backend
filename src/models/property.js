@@ -88,33 +88,34 @@ const PropertySchema = new mongoose.Schema(
 );
 PropertySchema.pre("save", async function (next) {
   try {
-     const data = await opencage.geocode({ q: "Theresienhöhe 11, München" });
+    const data = await opencage.geocode({ q: this.address });
 
-     if (data.status.code === 200 && data.results.length > 0) {
-        const place = data.results[0];
-        this.location = {
-           type: "Point",
-           coordinates: [place.geometry.lat, place.geometry.lng],
-           formattedAddress: place.formatted,
-           city: place.components.city,
-           streetName: place.components.quarter,
-        };
-     } else {
-        console.log("Status", data.status.message);
-        console.log("total_results", data.total_results);
-     }
+    if (data.status.code === 200 && data.results.length > 0) {
+      const place = data.results[0];
+      this.location = {
+        type: "Point",
+        coordinates: [place.geometry.lat, place.geometry.lng],
+        formattedAddress: place.formatted,
+        city: place.components.city,
+        streetName: place.components.quarter,
+      };
+      next();
+    } else {
+      const errorMessage = "Invalid address or location not found.";
+      console.log("Status", data.status.message);
+      console.log("total_results", data.total_results);
 
-     next();
+      // Pass an error to the middleware chain
+      next(new Error(errorMessage));
+    }
   } catch (error) {
-     console.log("Error", error.message);
+    console.log("Error", error.message);
 
-     if (error.status.code === 402) {
-        console.log("hit free trial daily limit");
-     }
-
-     next(error);
+    // Pass the error to the middleware chain
+    next(error);
   }
 });
+
 
 
 export default mongoose.model("property", PropertySchema);
