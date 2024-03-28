@@ -16,7 +16,7 @@ dotenv.config();
 // }));
 app.use(
     cors({
-      origin: ['https://homeonrentv.onrender.com','https://homeonrentback.onrender.com'],
+      origin: ['https://homeonrentv.onrender.com','https://homeonrentback.onrender.com,'],
       methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
       credentials: true,
     })
